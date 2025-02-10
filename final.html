@@ -65,16 +65,21 @@ body {
     }
 
     .letter {
-      display: none;
-      width: 80%;
-      font-size: large;
-      margin: 20px;
-      padding: 20px;
-      background-color: #fff;
-      border: 2px solid #000;
-      border-radius: 15px;
-      animation: fadeIn 0.6s ease-out;
-    }
+    display: none;
+    width: 80%;
+    font-size: large;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 15px;
+    animation: fadeIn 0.6s ease-out;
+    
+    /* Ограничение высоты и прокрутка */
+    max-height: 60vh; /* Не больше 60% экрана */
+    overflow-y: auto; /* Прокрутка при необходимости */
+}
+
 
     .qrcode {
       display: none;
