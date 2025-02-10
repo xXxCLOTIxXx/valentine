@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Твоя валентинка</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffebee;
+            flex-direction: column;
+        }
+        .envelope {
+            position: relative;
+            width: 250px;
+            height: 180px;
+            background-color: #e57373;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .letter {
+            position: absolute;
+            width: 200px;
+            height: 120px;
+            background-color: white;
+            border-radius: 5px;
+            top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out, opacity 0.3s;
+            transform: translateY(100%);
+            opacity: 0;
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+        .open .letter {
+            transform: translateY(-30px);
+            opacity: 1;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            backface-visibility: hidden;
+            position: absolute;
+            transition: transform 0.6s;
+        }
+        .front {
+            background-color: white;
+        }
+        .back {
+            background-color: #ffccbc;
+            transform: rotateY(180deg);
+            flex-direction: column;
+        }
+        .qrcode {
+            width: 80px;
+            height: 80px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .flip {
+            transform: rotateY(180deg);
+        }
+        .button {
+            background: #e57373;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="envelope" id="envelope">
+        <div class="letter" id="letter">
+            <div class="card front">❤️ С Днём святого Валентина! ❤️</div>
+            <div class="card back">
+                <div class="qrcode">[QR]</div>
+                <a href="https://example.com">
+                    <button class="button">Перейти</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let envelope = document.getElementById("envelope");
+        let letter = document.getElementById("letter");
+        let front = document.querySelector(".front");
+        let back = document.querySelector(".back");
+
+        envelope.addEventListener("click", function() {
+            this.classList.add("open");
+        });
+
+        letter.addEventListener("click", function() {
+            front.classList.toggle("flip");
+            back.classList.toggle("flip");
+        });
+    </script>
+
+</body>
+</html>

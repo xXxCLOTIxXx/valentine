@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Валентинка</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        .button {
+            background: white;
+            color: #ff758c;
+            border: none;
+            padding: 20px 30px;
+            margin: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s, background 0.3s;
+        }
+        .button:hover {
+            background: #ff3d68;
+            color: white;
+            transform: scale(1.1);
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <h1 id="question">Станешь моей валентинкой? ❤️</h1>
+    <button class="button" id="yes">Да</button>
+    <button class="button" id="no">Нет</button>
+
+    <div id="sure-question" class="hidden">
+        <h1>Точно? 🤔</h1>
+        <button class="button" id="sure-yes">Да</button>
+        <button class="button" id="sure-no">Нет</button>
+    </div>
+
+    <script>
+        document.getElementById("yes").addEventListener("click", function() {
+            document.getElementById("question").classList.add("hidden");
+            document.getElementById("yes").classList.add("hidden");
+            document.getElementById("no").classList.add("hidden");
+            document.getElementById("sure-question").classList.remove("hidden");
+        });
+
+        document.getElementById("no").addEventListener("click", function() {
+            window.location.href = "/error";
+        });
+
+        document.getElementById("sure-no").addEventListener("click", function() {
+            window.location.href = "/error";
+        });
+
+        document.getElementById("sure-yes").addEventListener("click", function() {
+            window.location.href = "/final";
+        });
+    </script>
+
+</body>
+</html>
