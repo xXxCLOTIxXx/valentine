@@ -1,128 +1,141 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Твоя валентинка</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #ffebee;
-            flex-direction: column;
-        }
-        .envelope {
-            position: relative;
-            width: 250px;
-            height: 180px;
-            background-color: #e57373;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-        .letter {
-            position: absolute;
-            width: 200px;
-            height: 120px;
-            background-color: white;
-            border-radius: 5px;
-            top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.5s ease-in-out, opacity 0.3s;
-            transform: translateY(100%);
-            opacity: 0;
-            backface-visibility: hidden;
-            perspective: 1000px;
-        }
-        .open .letter {
-            transform: translateY(-30px);
-            opacity: 1;
-        }
-        .card {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            backface-visibility: hidden;
-            position: absolute;
-            transition: transform 0.6s;
-        }
-        .front {
-            background-color: white;
-        }
-        .back {
-            background-color: #ffccbc;
-            transform: rotateY(180deg);
-            flex-direction: column;
-        }
-        .qrcode {
-            width: 80px;
-            height: 80px;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .flip {
-            transform: rotateY(180deg);
-        }
-        .button {
-            background: #e57373;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 1rem;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .button:hover {
-            background: #d32f2f;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Валентинка</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #ffb6c1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .envelope {
+      width: 250px;
+      height: 180px;
+      background-color: #fff;
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      transform-origin: center;
+      transition: all 0.6s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .envelope::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      background-color: #fff;
+      border: 2px solid #000;
+      border-radius: 10px;
+    }
+
+    .envelope:after {
+      content: '♥';
+      font-size: 70px;
+      color: red;
+      position: absolute;
+    }
+
+    .letter {
+      display: none;
+      width: 80%;
+      font-size: large;
+      margin: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border: 2px solid #000;
+      border-radius: 15px;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    .qrcode {
+      display: none;
+      margin-top: 30px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      background-color: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .qrcode img {
+      width: 100%;
+      max-width: 250px;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .envelope.disappear {
+      transform: scale(0) rotate(45deg);
+      opacity: 0;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="envelope" id="envelope">
-        <div class="letter" id="letter">
-            <div class="card front">❤️ С Днём святого Валентина! ❤️</div>
-            <div class="card back">
-                <div class="qrcode">
-                    <img src="https://raw.githubusercontent.com/xXxCLOTIxXx/valentine/refs/heads/main/qrcode.jpg" alt="QR Code" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <a href="https://xxxclotixxx.github.io/valentine/video.html">
-                    <button class="button">Перейти</button>
-                </a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="envelope" onclick="openLetter()"></div>
+    <div class="letter">
+      <p>З днем святого Валентина, хотіла б я добре розповісти про мої почуття до тебе і наскільки я закохана у тебе,я для тебе готова на багато чого і хочу щоб твоє життя було сповнення чудових моментів разом зі мною,я щаслива що зустріла саме тебе і не побоялася підійти першою та познайомитись, я чудово з тобою проводила час як і тоді так і зараз, зроблю все можливе щоб підтримувати тебе в тяжкі моменти та бути поряд коли не зовсім солодко, хочу ще сказати що твоя зовнішність дуже приваблива і як би хто не говорив я кохаю тебе і поважаю твої думки та погляди на життя, я буду поряд і в горючі та в радості я не завжди буду газом, як то говориться я зроблю 11 кроків чи зробиш ти 10? Це все таке но як я люблю наші прогулянки на зарядці, наш мідляк як дивились разом фільм і так дальше, я стараюсь пам'ятати все що зв'язувати тебе зі мною і твої красиві карі очі вони наче як одна окрема планета десь у космосі така самотня но коли бачу твою посмішку вона ніби світиться,хочу бути твоєю маленькою дівчинкою яка не буде думати про проблеми коли поряд із тобою,хочу побачити кожну сторону твого характеру щоб взнати тебе побільше і ще більше закохатися, я прийму тебе який ти є я буду тебе любити навіть якщо ти будеш не у настрої навіть коли будеш дурачитись чи будеш крінжово виглядати ти все ще залишаєшся моїм хорошим хлопчиком, дуже надіюсь що тобі сподобається цей простий подарок і ти будеш читати цей текст із посмішкою💋❤️</p>
+      <br>
+      <p>Тисни ще раз!!</p>
     </div>
+    <div class="qrcode">
+      <img src="https://raw.githubusercontent.com/xXxCLOTIxXx/valentine/refs/heads/main/qrcode.jpg" alt="QR-код">
+    </div>
+  </div>
 
-    <script>
-        let envelope = document.getElementById("envelope");
-        let letter = document.getElementById("letter");
-        let front = document.querySelector(".front");
-        let back = document.querySelector(".back");
+  <script>
+    function openLetter() {
+      const envelope = document.querySelector('.envelope');
+      envelope.classList.add('disappear');
 
-        envelope.addEventListener("click", function() {
-            this.classList.add("open");
-        });
+      setTimeout(() => {
+        envelope.style.display = 'none';
+        const letter = document.querySelector('.letter');
+        letter.style.display = 'block';
 
-        letter.addEventListener("click", function() {
-            front.classList.toggle("flip");
-            back.classList.toggle("flip");
-        });
-    </script>
-
+        letter.onclick = function() {
+          letter.style.display = 'none';
+          const qrcode = document.querySelector('.qrcode');
+          qrcode.style.display = 'block';
+          setTimeout(() => {
+            qrcode.style.opacity = 1;
+          }, 100);
+        }
+      }, 600);
+    }
+  </script>
 </body>
 </html>
