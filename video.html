@@ -4,75 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><text x='10' y='40' font-size='40'>❤️</text></svg>" type="image/svg+xml">
-    <title>Видео-Валентинка</title>
+    <title>Валентинка</title>
     <style>
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-          background-color: #d67878;
-          background-image: url('https://raw.githubusercontent.com/xXxCLOTIxXx/valentine/refs/heads/main/bg.jpg');
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            color: #d81b60;
-        }
-        .video-container {
-            position: relative;
-            width: 80%;
-            max-width: 900px;
-            background-color: #f8bbd0;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 0;
             overflow: hidden;
+            height: 100vh;
         }
         video {
             width: 100%;
-            height: auto;
-            border-radius: 15px;
-        }
-        .title {
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2.5rem;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-            font-weight: bold;
-        }
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
             height: 100%;
-            background: rgba(255, 105, 180, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .video-container:hover .overlay {
-            opacity: 1;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
-
-    <div class="video-container">
-        <div class="title">С Днём святого Валентина! 💖</div>
-        <video id="video" autoplay muted loop>
-            <source src="https://github.com/xXxCLOTIxXx/valentine/raw/refs/heads/main/video.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео.
-        </video>
-        <div class="overlay"></div>
-    </div>
-
+    <video autoplay muted loop>
+        <source src="https://github.com/xXxCLOTIxXx/valentine/raw/refs/heads/main/video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
 </body>
 </html>
